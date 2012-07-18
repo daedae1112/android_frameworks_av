@@ -271,6 +271,14 @@ uint32_t OMXCodec::getComponentQuirks(
                 index, "output-buffers-are-unreadable")) {
         quirks |= kOutputBuffersAreUnreadable;
     }
+    if (list->codecHasQuirk(
+                index, "requies-flush-before-disable")) {
+      quirks |= kNeedsFlushBeforeDisable;
+    }
+    if (list->codecHasQuirk(
+                index, "decoder-lies-about-nubmer-of-channels")) {
+      quirks |= kDecoderLiesAboutNumberOfChannels;
+    }
 
     return quirks;
 }
